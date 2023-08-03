@@ -1,0 +1,192 @@
+.devinfo {
+  padding: 15px;
+  color: white;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+*, html, body {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins";
+  max-width: 100%;
+}
+
+
+
+body {
+  max-width: 100%;
+  overflow-x: hidden  ;
+}
+
+img {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+a:visited {
+  color: initial;
+}
+
+
+header {
+  background-color: black;
+  width: 100vw;
+
+}
+
+
+@media only screen and (max-width : 900px) {
+  header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+  }
+
+  .logo {
+    padding-left: 30px;
+    height: 20px;
+    width: auto;
+    
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+  }
+
+  .toggle-menu {
+    background-color: rgb(145, 145, 145);
+    height: 100vh;
+    width: 80vw;
+    position: fixed;
+    top: 0;
+    right: -80vw;
+    transition: right 0.7s ease-in;
+  }
+
+  .show-toggle {
+    right: 0;
+  }
+
+  .search-box {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    background-color: gray;
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .show-search {
+    right: 0;
+  }
+
+
+  .search-box input {
+    width: 80%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+  .whatsapp-button {
+    height: 130px;
+    width: 5rem;
+    position: fixed;
+    right: 5px;
+    top: 75vh;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .show {
+    display: block;
+    right: -100px;
+    transition: transform 1s ease-in;
+  }
+
+  .hide {
+    transform: translateX(100px);
+  }
+
+  main {
+    max-width: 100%;
+  }
+  .advertising {
+    background-color: rgb(254, 55, 55);
+    color: white;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .banners {
+    display: block;
+    max-width: 100%;
+  }
+
+  .h2 {
+    background-color: rgb(217, 185, 247);
+    text-align: center;
+    padding: 5px;
+  }
+
+
+  .products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+
+  .card-product {
+    max-width: 150px;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .view-product {
+    width: 100%;  
+    background-color: rgb(217, 185, 247);
+    border-radius: 5px;
+
+
+  }
+
+
+  .footer {
+    background-color: #222222;
+    padding: 10px;
+  }
+
+  .footer-bottom {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.8rem;
+
+  }
+
+
+  }
