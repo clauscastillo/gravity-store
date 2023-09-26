@@ -1,28 +1,33 @@
 const Product = require("../models/product.model");
 const User = require("../models/users.model");
+const getProducts = (req, res) => {
+  Product.find().then((response) => res.json(response));
+};
 
-async function product(req, res) {
-  const { method, body, params } = req;
-  params.id && console.log(params);
+const getOneProduct = (req, res) => {
+  Product.findById(req.params.id).then((response) => res.json(response));
+};
 
-  switch (method) {
-    case "GET":
-      if (params.id) {
-        const products = await Product.findById(params.id);
-        res.json(products);
-      } else {
-        const products = await Product.find();
-        res.json(products);
-      }
-      break;
-    case "POST":
-      const product = await Product.create(body);
-      res.json(product);
-      break;
-    default:
-      res.json({ error: "Invalid method" });
-      break;
-  }
-}
+const addProduct = (req, res) => {
+  Product.create(req.body)
+    .then((response) => {
+      res.json("Producto agregado");
+    })
+    .catch((err) => res.json(err));
+};
+
+const editProduct = (req, res) => {};
+
+const deleteProduct = (req, res) => {
+  Product.findByIdAndDelete(req.params.id).then(() => res.json("Eliminado"));
+};
+
+const product = {
+  getProducts,
+  getOneProduct,
+  addProduct,
+  editProduct,
+  deleteProduct,
+};
 
 module.exports = product;

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const User = require("../models/users.model");
+require("dotenv").config();
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/gravity", {
+  .connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

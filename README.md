@@ -49,13 +49,13 @@
 <a href="https://ibb.co/k1vbXbD"><img src="https://i.ibb.co/cLVfQf8/B0-F3-C28-A-BE9-B-4-CBB-810-E-6-A44-E64-E0445.jpg" alt="B0-F3-C28-A-BE9-B-4-CBB-810-E-6-A44-E64-E0445" border="0"></a>
 https://i.ibb.co/xgYRjGk/B0-F3-C28-A-BE9-B-4-CBB-810-E-6-A44-E64-E0445.jpg
 https://i.ibb.co/RgZPt54/BF2-F5287-DF75-4681-9-AE2-99-B532-C1054-E.jpg
-https://i.ibb.co/hXgpXGT/IMG-2364.jpg"
-https://i.ibb.co/qpKjMtt/IMG-2366.jpg"
-https://i.ibb.co/5ktwWrL/IMG-2368.jpg"
-https://i.ibb.co/k0Rmz5k/IMG-2372.jpg"
-https://i.ibb.co/KspYrmV/IMG-2373.jpg"
-https://i.ibb.co/c1zH2LW/IMG-2374.jpg"
-https://i.ibb.co/5nMqBxj/IMG-2375.jpg"
-https://i.ibb.co/YLS2XHY/IMG-2396.jpg"
-https://i.ibb.co/Wky0CF8/IMG-2397.jpg"
-https://i.ibb.co/7R7mYjR/IMG-2398.jpg"
+
+https://i.ibb.co/qpKjMtt/IMG-2366.jpg
+https://i.ibb.co/5ktwWrL/IMG-2368.jpg
+https://i.ibb.co/k0Rmz5k/IMG-2372.jpg
+https://i.ibb.co/KspYrmV/IMG-2373.jpg
+https://i.ibb.co/c1zH2LW/IMG-2374.jpg
+https://i.ibb.co/5nMqBxj/IMG-2375.jpg
+
+Remeras
+https://i.ibb.co/hXgpXGT/IMG-2364.jpg
