@@ -1,55 +1,61 @@
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken");
-const SECRET = process.env.KEYJWT;
+const KEY_JWT = process.env.KEY_JWT;
+const bcrypt = require("bcrypt");
 
 module.exports = {
   getUser: async (req, res) => {
-    const token = req.headers.user;
-    const user = jwt.verify(token, SECRET);
-    User.findById(user._id).then((response) => {
-      res.json(response);
-    });
+    // const token = req.headers.user;
+    // const user = jwt.verify(token, SECRET);
+    // User.findById(user._id).then((response) => {
+    //   res.json(response);
+    // });
+    const user = await User.findAll();
+    res.json(user);
   },
 
   registerUser: async (req, res) => {
     try {
-      const newUser = await User.create(req.body);
-      console.log(newUser._id);
-      const userToken = jwt.sign({ _id: newUser._id }, SECRET);
-      console.log(userToken);
-      res.status(200).json({ accessToken: userToken });
+      console.log(console.log(req.body));
+      bcrypt.hash(req.body.password, 10, async (err, hash) => {
+        if (err) {
+          res
+            .status(500)
+            .json({
+              error: "Hubo un error con el encriptado de la contraseña",
+            });
+        } else {
+          const user = await User.create({
+            name: req.body.name,
+            password: hash,
+            phone: req.body.phone,
+            email: req.body.email,
+          });
+          res.status(200).json(user);
+        }
+      });
     } catch (error) {
       res.status(404).json(error);
     }
   },
 
   loginUser: async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ where: { email: req.body.email } });
     if (!user) {
-      res.status(400).json({ error: "Email no existe" });
+      return res
+        .status(400)
+        .json({ error: "Correo electrónico o contraseña incorrectos" });
     }
-    if (req.body.password != user.password) {
-      res.status(400).json({ error: "Password incorrecto" });
-    } else {
-      const userToken = jwt.sign({ _id: user._id }, SECRET);
-      res.json({ accessToken: userToken }).status(200);
+    const validPass = await bcrypt.compare(req.body.password, user.password);
+    if (!validPass) {
+      return res
+        .status(400)
+        .json({ error: "Correo electrónico o contraseña incorrectos" });
     }
-  },
-
-  loginUserInternal: async (req, res) => {
-    const user = await User.findOne({ name: req.body.name });
-    if (!user) {
-      res.status(400).json({ error: "No existe" });
-    }
-    if (req.body.password != user.password) {
-      res.status(400).json({ error: "Password incorrecto" });
-    } else {
-      if (!user.admin) {
-        res.status(400).json({ error: "No esta autorizado" });
-      } else {
-        const userToken = jwt.sign({ _id: user._id }, "SECRET");
-        res.json({ accessToken: userToken }).status(200);
-      }
-    }
+    const userToken = jwt.sign({ id: user.id }, KEY_JWT);
+    res
+      .status(200)
+      .cookie("auth", userToken, { maxAge: 10000 })
+      .json("Sesión iniciada correctamente");
   },
 };

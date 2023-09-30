@@ -1,56 +1,51 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/sequelize.config");
 
-const UserSchema = mongoose.Schema(
+const User = sequelize.define(
+  "users",
   {
-    admin: Boolean,
-    name: {
-      type: String,
-      required: [true, "Name is required"],
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
-    business: {
-      type: Boolean,
-      required: false,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
-      type: String,
-      required: true,
-      minlength: [8, "Password must be 8 characters or longer"],
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     phone: {
       type: Number,
-      required: false,
+      allowNull: true,
     },
     email: {
-      type: String,
-      required: false,
-      validate: {
-        validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
-        message: "Please enter a valid email",
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     collaborator: {
-      type: Boolean,
-      required: false,
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
     },
   },
-  { timestamps: true }
+  { timestamps: false }
 );
-
-// Password encrypted
-// UserSchema.pre("save", async function (next) {
-//   try {
-//     const hashedPassword = await bcrypt.hash(this.password, 10);
-//     this.password = hashedPassword;
-//   } catch {
-//     console.log("Error at save user");
-//   }
-// });
 
 // UserSchema.methods.generateAuthToken = function() {
 //   const token = jwt.sign({_id: this._id}, process.env.KEYJWT, {expiresIn:"7d"})
 //   return token
 // }
 
-const User = mongoose.model("users", UserSchema);
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Modelo y tabla de Producto sincronizados correctamente");
+  })
+  .catch((error) => {
+    console.error("Error al sincronizar el modelo de User:", error);
+  });
 
 module.exports = User;

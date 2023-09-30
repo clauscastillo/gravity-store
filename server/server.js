@@ -4,16 +4,13 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 // Iniciar server
 
 app.listen(port, () => {
   console.log("Server run at port " + port);
 });
-
-// Usa el middleware cookie-parser para analizar las cookies
-app.use(cookieParser());
 
 // Configuracion para peticiones cruzadas y lectura de POST
 app.use(
@@ -27,19 +24,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas públicas (sin autenticación)
-app.post("/api/login", (req, res) => {
-  // Aquí verificarías las credenciales del usuario
-  const { email, password } = req.body;
+// app.post("/api/login", (req, res) => {
+//   // Aquí verificarías las credenciales del usuario
+//   const { email, password } = req.body;
 
-  // Si las credenciales son válidas, genera un token JWT
-  if (email === "admin@local.local" && password === "123456") {
-    const token = jwt.sign({ email }, "secreto", { expiresIn: "1h" });
-    res.cookie("jwt", { token }, { httpOnly: true });
-    res.json("Cookie enviada");
-  } else {
-    res.status(401).json({ message: "Credenciales incorrectas" });
-  }
-});
+//   // Si las credenciales son válidas, genera un token JWT
+//   if (email === "admin@local.local" && password === "123456") {
+//     const token = jwt.sign({ email }, "secreto", { expiresIn: "1h" });
+//     res.cookie("jwt", { token }, { httpOnly: true });
+//     res.json("Cookie enviada");
+//   } else {
+//     res.status(401).json({ message: "Credenciales incorrectas" });
+//   }
+// });
 
 // Middleware de autenticación
 function authenticateToken(req, res, next) {
@@ -61,7 +58,7 @@ app.get("/productos", authenticateToken, (req, res) => {
 
 // Configuracion de mongoose
 
-require("./config/mongoose.config");
+// require("./config/mongoose.config");
 
 // Rutas
 

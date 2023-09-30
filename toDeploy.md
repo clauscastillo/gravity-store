@@ -7,6 +7,7 @@ $ nodejs -v
 # this should print out version 8.10.0
 
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+restart the server
 $ nvm install --lts
 $ nvm alias default <versión>
 $ node -v
