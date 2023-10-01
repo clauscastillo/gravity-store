@@ -4,6 +4,14 @@ import axios from "axios";
 const Login = () => {
   return (
     <div>
+      {/* <form action="">
+        <label htmlFor="">Email</label>
+        <input type="text" name="email" id="" />
+        <label htmlFor="">Contraseña</label>
+        <input type="password" name="password" id="" />
+        button
+      </form> */}
+
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -19,10 +27,9 @@ const Login = () => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            axios.post("http://localhost:8000/api/login", values, {
-              withCredentials: true,
-              credentials: "include",
-            });
+            axios
+              .post("/api/login", values)
+              .then((res) => console.log(res.data));
             setSubmitting(false);
           }, 400);
         }}
@@ -38,7 +45,6 @@ const Login = () => {
           /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -47,7 +53,6 @@ const Login = () => {
               value={values.email}
             />
             {errors.email && touched.email && errors.email}
-            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
               name="password"
