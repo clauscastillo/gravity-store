@@ -20,3 +20,5 @@ sequelize
   });
 
 // Define tus modelos y realiza otras operaciones de Sequelize aquí.
+
+module.exports = sequelize;
