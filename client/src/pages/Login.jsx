@@ -28,7 +28,7 @@ const Login = () => {
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             axios
-              .post("/api/login", values)
+              .post("http://localhost:8880/api/login", values)
               .then((res) => console.log(res.data));
             setSubmitting(false);
           }, 400);

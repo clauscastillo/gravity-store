@@ -39,13 +39,13 @@ const User = sequelize.define(
 //   return token
 // }
 
-// sequelize
-//   .sync()
-//   .then(() => {
-//     console.log("Modelo y tabla de Producto sincronizados correctamente");
-//   })
-//   .catch((error) => {
-//     console.error("Error al sincronizar el modelo de User:", error);
-//   });
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Modelo y tabla de Producto sincronizados correctamente");
+  })
+  .catch((error) => {
+    console.error("Error al sincronizar el modelo de User:", error);
+  });
 
 module.exports = User;
