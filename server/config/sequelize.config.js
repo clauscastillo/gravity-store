@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
   host: "database-1.cxfqvjlozrcw.sa-east-1.rds.amazonaws.com", // Reemplaza con el endpoint de tu instancia RDS
   dialect: "mysql",
   username: "admin", // Reemplaza con tu nombre de usuario de RDS
-  password: "6F3zLLXYRncEW8vUHW555tffnt7", // Reemplaza con tu contraseña de RDS
+  password: "q87Nk3t7H7F", // Reemplaza con tu contraseña de RDS
   database: "gravity", // Reemplaza con el nombre de tu base de datos
 });
 
@@ -22,3 +22,5 @@ sequelize
 // Define tus modelos y realiza otras operaciones de Sequelize aquí.
 
 module.exports = sequelize;
+
+// q87Nk3t7H7F
